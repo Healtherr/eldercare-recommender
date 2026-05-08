@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>稳退规划 | 养老金融产品推荐系统</title>
+    <meta
+      name="description"
+      content="面向 35-60 岁未退休人群的养老金融产品推荐系统，通过问卷匹配储蓄、理财、基金、保险组合。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#assessment" aria-label="稳退规划首页">
+          <span class="brand-mark" aria-hidden="true">稳</span>
+          <span>
+            <span class="eyebrow">养老金融产品推荐系统</span>
+            <strong>稳退规划</strong>
+          </span>
+        </a>
+
+        <nav class="mode-tabs" aria-label="系统视图">
+          <button class="tab is-active" type="button" data-tab="assessment">测评</button>
+          <button class="tab" type="button" data-tab="result">方案</button>
+          <button class="tab" type="button" data-tab="catalog">产品库</button>
+        </nav>
+      </header>
+
+      <main class="main-grid">
+        <section class="view-pane is-visible" id="assessmentView" data-view="assessment">
+          <div class="question-toolbar">
+            <div>
+              <span class="eyebrow" id="sectionName">基础画像</span>
+              <h1 id="questionTitle">你的当前年龄段</h1>
+            </div>
+            <div class="progress-meter" aria-label="测评进度">
+              <span id="progressLabel">1 / 13</span>
+              <div class="progress-track">
+                <span id="progressBar"></span>
+              </div>
+            </div>
+          </div>
+
+          <p class="question-note" id="questionHint"></p>
+
+          <div class="options-grid" id="optionsGrid" role="radiogroup" aria-label="题目选项"></div>
+
+          <div class="wizard-actions">
+            <button class="ghost-button" type="button" id="prevBtn">
+              <span aria-hidden="true">←</span>
+              上一步
+            </button>
+            <div class="action-cluster">
+              <button class="icon-button" type="button" id="resetBtn" title="重置答案" aria-label="重置答案">
+                ↺
+              </button>
+              <button class="primary-button" type="button" id="nextBtn">
+                下一题
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-pane" id="resultView" data-view="result">
+          <div class="result-heading">
+            <div>
+              <span class="eyebrow">匹配方案</span>
+              <h1 id="profileTitle">正在生成养老规划画像</h1>
+            </div>
+            <span class="type-code" id="typeCode">--</span>
+          </div>
+
+          <div class="result-layout">
+            <section class="recommendation-panel" aria-labelledby="packageTitle">
+              <span class="panel-kicker">主推荐组合</span>
+              <h2 id="packageTitle">完成测评后查看组合</h2>
+              <p id="packageSummary"></p>
+              <div class="cost-band" id="costBand"></div>
+              <div class="package-stack" id="packageStack"></div>
+            </section>
+
+            <section class="decision-panel" aria-labelledby="reasonTitle">
+              <span class="panel-kicker">推荐依据</span>
+              <h2 id="reasonTitle">规划维度优先级</h2>
+              <div class="axis-list" id="axisList"></div>
+              <div class="reason-list" id="reasonList"></div>
+            </section>
+          </div>
+
+          <section class="next-steps" aria-labelledby="nextStepsTitle">
+            <div>
+              <span class="panel-kicker">落地动作</span>
+              <h2 id="nextStepsTitle">30 天启动清单</h2>
+            </div>
+            <ol id="actionPlan"></ol>
+          </section>
+        </section>
+
+        <section class="view-pane" id="catalogView" data-view="catalog">
+          <div class="catalog-heading">
+            <div>
+              <span class="eyebrow">产品库</span>
+              <h1>可纳入推荐的养老金融产品</h1>
+            </div>
+            <select id="catalogFilter" aria-label="筛选产品类型">
+              <option value="all">全部类型</option>
+              <option value="savings">储蓄</option>
+              <option value="wealth">理财</option>
+              <option value="fund">基金</option>
+              <option value="insurance">保险</option>
+            </select>
+          </div>
+          <div class="catalog-grid" id="catalogGrid"></div>
+        </section>
+
+        <aside class="insight-pane" aria-label="测评预览">
+          <canvas id="careCanvas" width="520" height="280" aria-label="养老规划维度分布图"></canvas>
+
+          <div class="snapshot">
+            <div>
+              <span class="panel-kicker">当前画像</span>
+              <h2 id="snapshotTitle">未完成测评</h2>
+            </div>
+            <p id="snapshotCopy">选择答案后，右侧会同步出现退休期限、储备能力、保障缺口与产品组合倾向。</p>
+          </div>
+
+          <div class="stat-grid">
+            <div>
+              <span id="answeredCount">0</span>
+              <small>已答题</small>
+            </div>
+            <div>
+              <span id="topNeed">--</span>
+              <small>主导维度</small>
+            </div>
+            <div>
+              <span id="budgetSignal">--</span>
+              <small>投入能力</small>
+            </div>
+          </div>
+
+          <div class="live-picks">
+            <span class="panel-kicker">候选组合</span>
+            <div id="livePicks"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
