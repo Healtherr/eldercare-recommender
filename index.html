@@ -36,7 +36,7 @@
               <h1 id="questionTitle">你的当前年龄段</h1>
             </div>
             <div class="progress-meter" aria-label="测评进度">
-              <span id="progressLabel">1 / 13</span>
+              <span id="progressLabel">1 / 26</span>
               <div class="progress-track">
                 <span id="progressBar"></span>
               </div>
@@ -117,7 +117,13 @@
         </section>
 
         <aside class="insight-pane" aria-label="测评预览">
-          <canvas id="careCanvas" width="520" height="280" aria-label="养老规划维度分布图"></canvas>
+          <div class="preview-hero">
+            <canvas id="careCanvas" width="520" height="280" aria-label="养老规划维度分布图"></canvas>
+            <div class="readiness-badge" id="readinessBadge">
+              <span>画像完整度</span>
+              <strong>0%</strong>
+            </div>
+          </div>
 
           <div class="snapshot">
             <div>
@@ -141,6 +147,10 @@
               <small>投入能力</small>
             </div>
           </div>
+
+          <div class="allocation-preview" id="allocationPreview" aria-label="推荐配置预览"></div>
+
+          <div class="insight-signals" id="insightSignals" aria-label="实时风险和机会信号"></div>
 
           <div class="live-picks">
             <span class="panel-kicker">候选组合</span>
